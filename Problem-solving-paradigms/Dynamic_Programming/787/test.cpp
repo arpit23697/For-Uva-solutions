@@ -1,3 +1,6 @@
+//this code is not working properly
+
+
 #include <iostream>
 #include <vector>
 #include <iterator>
@@ -131,7 +134,7 @@ int main ()
         int n = i;
         Big mainAnswer (a[0]);
         Big memo[n][n].set(1);
-       // memset (memo , 1 , sizeof memo);            //row represents the length and col represents the pos
+        memset (memo , 1 , sizeof memo);            //row represents the length and col represents the pos
 
         for (int i = 0 ; i < n ; i++)
         {
