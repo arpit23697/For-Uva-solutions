@@ -18,23 +18,25 @@
 #include <queue>
 
 using namespace std;
-long long int money , n , values[100000] , wt[100000] , totalExpense;
-long long int val (long long int id , long long int remMoney)
-{
-
-
-	if (remMoney <= 0)
-		return 0;
-	else if (id == n)
-		return 0;
-	else if (values[id] > remMoney )
-		return val (id + 1 , remMoney);
-	else
+long long int money , n , m[100000] , favour[100000] , memo[110][15000] ;
+long long int val (long long int id , long long int soFar)
+{ 
+	if (soFar > money && money < 1800)
+		return -1000;
+	if (soFar > money + 200)
+		return -1000;
+	if ( id == n )
 	{
-		long long int x1 = val (id+1 , remMoney) ;
-		long long int x2 = wt[id] + val(id + 1 , remMoney - values[id]);
-		return max (x1 , x2);
+		if (soFar > money && soFar <= 2000)
+			return -1000;
+		return 0;
 	}
+
+	//cout << id << " " << soFar << endl;
+	if (memo[id][soFar] != -1)
+		return memo[id][soFar];
+
+	return memo[id][soFar] =  max ( val (id + 1 , soFar) , favour[id] + val(id +1 , soFar + m[id]) );
 }
 
 
@@ -45,12 +47,15 @@ int main ()
 
 	while (scanf ("%lld %lld",&money , &n ) == 2)
 	{
-		totalExpense = 0;
 		for (int i = 0 ; i < n ; i++)
-			cin >> values[i] >> wt[i];
+			cin >> m[i] >> favour[i];
 
-		long long int ans = val ( 0, money);
+		memset (memo , -1 , sizeof memo);
+
+
+		long long int ans = val ( 0, 0);
 		cout << ans << endl;
+
 
 	}
 
