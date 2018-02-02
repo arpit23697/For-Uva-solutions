@@ -5,6 +5,8 @@ long long int memo_change[110][20000];
 long long int totalSum;
 long long int memo[110][20000];
 
+
+
 long long int solveChange (long long int id , long long int value)
 {
 	//cout << value << " " << id << endl;
