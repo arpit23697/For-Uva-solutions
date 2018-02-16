@@ -19,28 +19,28 @@
 #include <queue>
 
 using namespace std;
-vector <long long int> LIS;
+	vector <long long int> LIS;
 
-long long int binarySearch (long long int value , int high , int low)
-{
-	long long int mid = -1;
-	long long int ans = -1;
-	while (low <= high)
+	long long int binarySearch (long long int value , int high , int low)
 	{
-		mid = (low + high)/2;
-		if (value > LIS[mid])
+		long long int mid = -1;
+		long long int ans = -1;
+		while (low <= high)
 		{
-			ans = mid;
-			low = mid + 1;
+			mid = (low + high)/2;
+			if (value > LIS[mid])
+			{
+				ans = mid;
+				low = mid + 1;
+			}
+			else
+			{
+				high = mid - 1;
+			}
 		}
-		else
-		{
-			high = mid - 1;
-		}
-	}
 
-	return ans;
-}
+		return ans;
+	}
 
 
 int main ()
