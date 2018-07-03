@@ -1,0 +1,3 @@
+Data set 1: 6300
+Data set 2: 46930980096000
+Data set 3: 75600
